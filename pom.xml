@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.evan</groupId>
-    <artifactId>my-sxd</artifactId>
+    <artifactId>sanxingdui</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>my-sxd</name>
+    <name>sanxingdui</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -198,7 +198,7 @@
             </plugin>
         </plugins>
         <!--jar包名-->
-        <finalName>sxd</finalName>
+        <finalName>sanxingdui</finalName>
     </build>
 
 

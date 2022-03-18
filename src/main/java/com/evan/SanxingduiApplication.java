@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @MapperScan("com.evan.dao")
 //@EnableCaching
-public class MySxdApplication {
+public class SanxingduiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MySxdApplication.class, args);
+        SpringApplication.run(SanxingduiApplication.class, args);
     }
 }
