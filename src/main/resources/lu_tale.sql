@@ -4,7 +4,7 @@
  Source Server         : WindowMysql
  Source Server Type    : MySQL
  Source Server Version : 50722
- Source Host           : 121.196.211.123:3306
+ Source Host           : 阿里云121.196.211.123:3306
  Source Schema         : sxd
 
  Target Server Type    : MySQL

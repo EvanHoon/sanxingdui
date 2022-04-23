@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@Api("友情链接管理")
+@Api("科普链接管理")
 @Controller
 @RequestMapping("/admin/links")
 public class LinksController extends BaseController {
@@ -41,7 +41,7 @@ public class LinksController extends BaseController {
         return "admin/links";
     }
 
-    @ApiOperation("新增友情链接")
+    @ApiOperation("新增科普链接")
     @PostMapping(value = "/save")
     @ResponseBody
     public APIResponse addLink(
@@ -83,7 +83,7 @@ public class LinksController extends BaseController {
         return APIResponse.success();
     }
 
-    @ApiOperation("删除友情链接")
+    @ApiOperation("删除科普链接")
     @PostMapping(value = "/delete")
     @ResponseBody
     public APIResponse deleteLink(
