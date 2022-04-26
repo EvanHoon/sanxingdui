@@ -108,7 +108,7 @@ public class BaseInterceptor implements HandlerInterceptor {
         Long tagCount = metaService.getMetasCountByType(Types.TAG.getType());
         // 获取文章总数
         StatisticsDto statistics = siteService.getStatistics();
-        // 获取科普链接
+        // 获取扩展链接
         List<MetaDto> links = metaService.getMetaList(Types.LINK.getType(),null,WebConst.MAX_POSTS);
 
         session.setAttribute("categoryCount",categoryCount);

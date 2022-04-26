@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@Api("科普链接管理")
+@Api("扩展链接管理")
 @Controller
 @RequestMapping("/admin/links")
 public class LinksController extends BaseController {
@@ -31,7 +31,7 @@ public class LinksController extends BaseController {
     private MetaService metaService;
 
 
-    @ApiOperation("友链页面")
+    @ApiOperation("外链页面")
     @GetMapping(value = "")
     public String index(HttpServletRequest request) {
         MetaCond metaCond = new MetaCond();
@@ -41,7 +41,7 @@ public class LinksController extends BaseController {
         return "admin/links";
     }
 
-    @ApiOperation("新增科普链接")
+    @ApiOperation("新增扩展链接")
     @PostMapping(value = "/save")
     @ResponseBody
     public APIResponse addLink(
@@ -83,7 +83,7 @@ public class LinksController extends BaseController {
         return APIResponse.success();
     }
 
-    @ApiOperation("删除科普链接")
+    @ApiOperation("删除扩展链接")
     @PostMapping(value = "/delete")
     @ResponseBody
     public APIResponse deleteLink(

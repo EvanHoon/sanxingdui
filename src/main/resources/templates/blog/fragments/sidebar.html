@@ -9,7 +9,7 @@
                 <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                     <img class="site-author-image" itemprop="image" th:src="@{/blog/image/sxd11.jpg}" alt="sxd">
                     <p class="site-author-name" itemprop="name">三星堆遗址科幻探索</p>
-                    <p class="site-description motion-element" itemprop="description">关注三星堆</p>
+                    <p class="site-description motion-element" itemprop="description">三星堆动态</p>
                 </div>
                 <nav class="site-state motion-element">
                     <div class="site-state-item site-state-posts">
@@ -89,12 +89,13 @@
                 <div class="links-of-blogroll motion-element links-of-blogroll-inline">
                     <div class="links-of-blogroll-title">
                         <i class="fa  fa-fw fa-link"></i>
-                        科普链接
+                        扩展链接
                     </div>
                     <th:block th:if="${session.links} != 0">
                         <ul th:each="link : ${session.links}" class="links-of-blogroll-list">
-                            <li class="links-of-blogroll-item">
+                            <li class="links-of-blogroll-inline">
                                 <a th:href="${link.slug}" th:title="${link.name}" target="_blank">
+                                    <img style="height: 12px; width: 12px;" th:src="${link.description}" alt="">
                                     <th:block th:text="${link.name}"></th:block>
                                 </a>
                             </li>

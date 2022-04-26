@@ -15,7 +15,7 @@ public enum Types {
     ARTICLE("post"),
     // csrf_token
     CSRF_TOKEN("csrf_token"),
-    // 科普链接
+    // 扩展链接
     LINK("link"),
     // 评论
     COMMENTS_FREQUENCY("comments:frequency"),
