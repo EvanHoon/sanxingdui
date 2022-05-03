@@ -32,10 +32,10 @@
                                         </td>
                                         <td>
                                             <th:block th:if="${post.type == 'post'}">
-                                                <span class="label label-success">科普</span>
+                                                <span class="label label-success">展文</span>
                                             </th:block>
                                             <th:block th:if="${post.type == 'photo'}">
-                                                <span class="label label-default">摘要</span>
+                                                <span class="label label-default">简文</span>
                                             </th:block>
                                         </td>
                                         <td><th:block th:text="${commons.fmtdate(post.created, 'yyyy-MM-dd HH:mm:ss')}"/></td>

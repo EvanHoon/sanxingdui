@@ -149,12 +149,24 @@
           cid = #{cid, jdbcType=INTEGER}
     </delete>
 
-    <!--获取文章总数-->
-    <select id="getArticleCount" resultType="java.lang.Long">
+    <!--获取展文总数-->
+    <select id="getPostArticleCount" resultType="java.lang.Long">
         SELECT
           COUNT(*)
         FROM
           <include refid="BASE_TABLE"/>
+        WHERE
+            type = 'post'
+    </select>
+
+    <!--获取简文总数-->
+    <select id="getPhotoArticleCount" resultType="java.lang.Long">
+        SELECT
+        COUNT(*)
+        FROM
+        <include refid="BASE_TABLE"/>
+        WHERE
+        type = 'photo'
     </select>
     <!--通过分类获取文章-->
     <select id="getArticleByCategory" resultType="com.evan.model.ContentDomain">

@@ -75,8 +75,11 @@ public class SiteServiceImpl implements SiteService {
     public StatisticsDto getStatistics() {
         LOGGER.debug("Enter recentStatistics method");
 
-        // 文章总数
-        Long articles = contentDao.getArticleCount();
+        // 展文总数
+        Long articles = contentDao.getPostArticleCount();
+
+        // 获取附件数
+        Long photos = contentDao.getPhotoArticleCount();
 
         // 评论总数
         Long comments = commentDao.getCommentCount();
@@ -84,14 +87,12 @@ public class SiteServiceImpl implements SiteService {
         // 链接数
         Long links = metaDao.getMetasCountByType(Types.LINK.getType());
 
-        // 获取附件数
-        Long attAches = attAchDao.getAttAchCount();
 
         StatisticsDto rs = new StatisticsDto();
         rs.setArticles(articles);
         rs.setComments(comments);
         rs.setLinks(links);
-        rs.setAttachs(attAches);
+        rs.setPhotos(photos);
         LOGGER.debug("Exit recentStatistics method");
         return rs;
     }

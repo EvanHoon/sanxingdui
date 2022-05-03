@@ -52,11 +52,16 @@ public interface ContentDao {
     void deleteArticleById(Integer cid);
 
     /**
-     * 获取文章总数
+     * 获取展文总数
      * @return
      */
-    Long getArticleCount();
+    Long getPostArticleCount();
 
+    /**
+     * 获取简文总数
+     * @return
+     */
+    Long getPhotoArticleCount();
     /**
      * 通过分类名获取文章
      * @param category

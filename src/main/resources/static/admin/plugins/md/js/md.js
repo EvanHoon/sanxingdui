@@ -27,7 +27,7 @@ function markdown(textarea, toolbar, preview) {
         headingexample: '标题文字',
 
         hr: '分割线 <hr> Ctrl+R',
-        more: '摘要分割线 <!--more--> Ctrl+M',
+        more: '简文分割线 <!--more--> Ctrl+M',
 
         undo: '撤销 - Ctrl+Z',
         redo: '重做 - Ctrl+Y',

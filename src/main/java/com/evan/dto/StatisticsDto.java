@@ -16,6 +16,11 @@ public class StatisticsDto {
     private Long articles;
 
     /**
+     * 文件数
+     */
+    private Long photos;
+
+    /**
      * 评论数
      */
     private Long comments;
@@ -24,11 +29,6 @@ public class StatisticsDto {
      * 链接数
      */
     private Long links;
-
-    /**
-     * 文件数
-     */
-    private Long attachs;
 
     public Long getArticles() {
         return articles;
@@ -54,11 +54,11 @@ public class StatisticsDto {
         this.links = links;
     }
 
-    public Long getAttachs() {
-        return attachs;
+    public Long getPhotos() {
+        return photos;
     }
 
-    public void setAttachs(Long attachs) {
-        this.attachs = attachs;
+    public void setPhotos(Long photos) {
+        this.photos = photos;
     }
 }
