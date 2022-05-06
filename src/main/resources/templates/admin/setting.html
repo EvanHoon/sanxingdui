@@ -15,45 +15,52 @@
                     <div class="col-md-6">
                         <div class="panel panel-color panel-primary">
                             <div class="panel-heading">
-                                <h3 class="panel-title">全局设置</h3>
+                                <h3 class="panel-title">密码修改</h3>
                             </div>
                             <div class="panel-body">
                                 <form class="form-horizontal" role="form" id="global-form">
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">站点名称</label>
+                                        <label class="col-md-3 control-label">账号</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="site_title" placeholder="站点名称"
-                                                   th:value="${options.site_title}" required="required" aria-required="true"/>
+                                            <input type="text" class="form-control" name="username" placeholder="账号"
+                                                   th:value="${user.username}" aria-required="true" readonly="readonly"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">站点描述</label>
+                                        <label class="col-md-3 control-label">密码</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="site_description" placeholder="站点描述"
-                                                   th:value="${options.site_description}" required="required" aria-required="true"/>
+                                            <input type="text" class="form-control" name="password1" placeholder="密码"
+                                                   required="required" aria-required="true"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">ICP备案号</label>
+                                        <label class="col-md-3 control-label">确认密码</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="site_record" placeholder="ICP备案号"
-                                                   th:value="${options.site_record}" required="required" aria-required="true"/>
+                                            <input type="text" class="form-control" name="password2" placeholder="确认密码"
+                                                   required="required" aria-required="true"/>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">google网站验证码</label>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control" name="google_site_verification" placeholder="google网站验证码"
-                                                   th:value="${options.google_site_verification}" required="required" aria-required="true"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">百度网站验证码</label>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control" name="baidu_site_verification" placeholder="百度网站验证码"
-                                                   th:value="${options.baidu_site_verification}" required="required" aria-required="true"/>
-                                        </div>
-                                    </div>
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-md-3 control-label">ICP备案号</label>-->
+<!--                                        <div class="col-md-9">-->
+<!--                                            <input type="text" class="form-control" name="site_record" placeholder="ICP备案号"-->
+<!--                                                   th:value="${options.record}" required="required" aria-required="true"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-md-3 control-label">google网站验证码</label>-->
+<!--                                        <div class="col-md-9">-->
+<!--                                            <input type="text" class="form-control" name="google_site_verification" placeholder="google网站验证码"-->
+<!--                                                   th:value="${options.google_site_verification}" required="required" aria-required="true"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-md-3 control-label">百度网站验证码</label>-->
+<!--                                        <div class="col-md-9">-->
+<!--                                            <input type="text" class="form-control" name="baidu_site_verification" placeholder="百度网站验证码"-->
+<!--                                                   th:value="${options.baidu_site_verification}" required="required" aria-required="true"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
                                     <!--<div class="form-group">-->
                                         <!--<label class="col-md-3 control-label">sxd主题</label>-->
@@ -64,7 +71,7 @@
                                         <!--</div>-->
                                     <!--</div>-->
 
-                                    <input type="hidden" name="allow_install" id="allow_install"/>
+<!--                                    <input type="hidden" name="allow_install" id="allow_install"/>-->
                                     <div class="clearfix pull-right">
                                         <button type="button" class="btn btn-primary waves-effect waves-light" onclick="saveSetting()">
                                             保存设置
@@ -78,63 +85,70 @@
                     <div class="col-md-6">
                         <div class="panel panel-color panel-inverse">
                             <div class="panel-heading">
-                                <h3 class="panel-title">个性化设置</h3>
+                                <h3 class="panel-title">信息修改</h3>
                             </div>
                             <div class="panel-body">
                                 <form id="indivi-form" class="form-horizontal" role="form">
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">CSDN博客</label>
+                                        <label class="col-md-3 control-label">账号</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="social_csdn" th:value="${options.social_csdn}"
-                                                   placeholder="CSDN博客，不输入则不显示"/>
+                                            <input type="text" class="form-control" name="username" placeholder="账号"
+                                                   th:value="${user.username}" aria-required="true" readonly="readonly"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">简历</label>
+                                        <label class="col-md-3 control-label">邮箱</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="social_resume" th:value="${options.social_resume}"
-                                                   placeholder="简历地址，不输入则不显示"/>
+                                            <input type="text" class="form-control" name="email" th:value="${user.email}"
+                                                   placeholder="邮箱"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">简书</label>
+                                        <label class="col-md-3 control-label">姓名</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="social_jianshu" th:value="${options.social_jianshu}"
-                                                   placeholder="简书账号，不输入则不显示"/>
+                                            <input type="text" class="form-control" name="screenName" th:value="${user.screenName}"
+                                                   placeholder="姓名"/>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">微博账号</label>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control" name="social_weibo" th:value="${options.social_weibo}"
-                                                   placeholder="微博账号，不输入则不显示"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">知乎账号</label>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control" name="social_zhihu" th:value="${options.social_zhihu}"
-                                                   placeholder="知乎账号，不输入则不显示"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Github账号</label>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control" name="social_github"
-                                                   th:value="${options.social_github}" placeholder="Github账号，不输入则不显示"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Twitter账号</label>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control" name="social_twitter"
-                                                   th:value="${options.social_twitter}" placeholder="Twitter账号，不输入则不显示"/>
-                                        </div>
-                                    </div>
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-md-3 control-label">简书</label>-->
+<!--                                        <div class="col-md-9">-->
+<!--                                            <input type="text" class="form-control" name="social_jianshu" th:value="${options.social_jianshu}"-->
+<!--                                                   placeholder="简书账号，不输入则不显示"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-md-3 control-label">微博账号</label>-->
+<!--                                        <div class="col-md-9">-->
+<!--                                            <input type="text" class="form-control" name="social_weibo" th:value="${options.social_weibo}"-->
+<!--                                                   placeholder="微博账号，不输入则不显示"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-md-3 control-label">知乎账号</label>-->
+<!--                                        <div class="col-md-9">-->
+<!--                                            <input type="text" class="form-control" name="social_zhihu" th:value="${options.social_zhihu}"-->
+<!--                                                   placeholder="知乎账号，不输入则不显示"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-md-3 control-label">Github账号</label>-->
+<!--                                        <div class="col-md-9">-->
+<!--                                            <input type="text" class="form-control" name="social_github"-->
+<!--                                                   th:value="${options.social_github}" placeholder="Github账号，不输入则不显示"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-md-3 control-label">Twitter账号</label>-->
+<!--                                        <div class="col-md-9">-->
+<!--                                            <input type="text" class="form-control" name="social_twitter"-->
+<!--                                                   th:value="${options.social_twitter}" placeholder="Twitter账号，不输入则不显示"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                     <div class="clearfix pull-right">
                                         <button type="button" class="btn btn-inverse waves-effect waves-light"
                                                 onclick="saveIndiviSetting()">
-                                            保存设置
+                                            保存信息
                                         </button>
                                     </div>
                                 </form>
@@ -184,13 +198,13 @@
     function saveSetting() {
         var param = $('#global-form').serialize();
         tale.post({
-            url : '/admin/setting',
+            url : '/admin/update1',
             data: param,
             success: function (result) {
                 if(result && result.code == 'success'){
-                    tale.alertOk('设置保存成功');
+                    tale.alertOk('密码修改成功');
                 } else {
-                    tale.alertError(result.msg || '设置保存失败');
+                    tale.alertError(result.msg || '设置修改失败');
                 }
             }
         });
@@ -202,13 +216,13 @@
     function saveIndiviSetting() {
         var param = $('#indivi-form').serialize();
         tale.post({
-            url : '/admin/setting',
+            url : '/admin/update2',
             data: param,
             success: function (result) {
                 if(result && result.code == 'success'){
-                    tale.alertOk('设置保存成功');
+                    tale.alertOk('信息保存成功');
                 } else {
-                    tale.alertError(result.msg || '设置保存失败');
+                    tale.alertError(result.msg || '信息保存失败');
                 }
             }
         });

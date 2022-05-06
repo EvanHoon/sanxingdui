@@ -19,6 +19,13 @@ public interface UserDao {
     UserDomain getUserInfoByCond(@Param("username") String username, @Param("password") String password);
 
     /**
+     * 根据用户名密码获取用户信息
+     * @param username  用户名
+     * @return
+     */
+    UserDomain getUserInfoByUsername(@Param("username") String username);
+
+    /**
      * 通过用户ID获取用户信息
      * @param uid
      * @return
@@ -32,4 +39,5 @@ public interface UserDao {
      */
     int updateUserInfo(UserDomain user);
 
+    Integer registerUser(UserDomain user);
 }

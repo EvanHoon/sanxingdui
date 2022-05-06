@@ -20,6 +20,8 @@ public interface UserService {
      */
     UserDomain login(String username, String password);
 
+    Integer register(String username, String password, String email ,String screenName);
+
     /**
      * 通过用户ID获取用户信息
      * @param uid   主键

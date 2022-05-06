@@ -114,7 +114,7 @@ public class ArticleController extends BaseController {
             @RequestParam(name = "tags", required = false)
             String tags,
             @ApiParam(name = "categories", value = "分类", required = false)
-            @RequestParam(name = "categories", required = false, defaultValue = "默认分类")
+            @RequestParam(name = "categories", required = false, defaultValue = "三星堆出土")
             String categories,
             @ApiParam(name = "allowComment", value = "是否允许评论", required = true)
             @RequestParam(name = "allowComment", required = true)
@@ -160,7 +160,7 @@ public class ArticleController extends BaseController {
             @RequestParam(name = "status", required = true)
             String status,
             @ApiParam(name = "categories", value = "文章分类", required = false)
-            @RequestParam(name = "categories", required = false, defaultValue = "默认分类")
+            @RequestParam(name = "categories", required = false, defaultValue = "三星堆出土")
             String categories,
             @ApiParam(name = "tags", value = "文章标签", required = false)
             @RequestParam(name = "tags", required = false)

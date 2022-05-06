@@ -24,6 +24,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Api("登录相关接口")
 @Controller
@@ -43,6 +45,12 @@ public class AuthController extends BaseController {
     @GetMapping(value = "/login")
     public String login() {
         return "admin/login";
+    }
+
+    @ApiOperation("跳转注册页")
+    @GetMapping(value = "/register")
+    public String register() {
+        return "admin/register";
     }
 
 
@@ -95,6 +103,60 @@ public class AuthController extends BaseController {
         return APIResponse.success();
     }
 
+
+
+    @ApiOperation("注册")
+    @PostMapping(value = "/register")
+    @ResponseBody
+    public APIResponse toRegister(
+            HttpServletRequest request,
+            HttpServletResponse response,
+            @ApiParam(name = "username", value = "用户名", required = true)
+            @RequestParam(name = "username", required = true)
+                    String username,
+            @ApiParam(name = "password1", value = "密码1", required = true)
+            @RequestParam(name = "password1", required = true)
+                    String password1,
+            @ApiParam(name = "password2", value = "密码2", required = true)
+            @RequestParam(name = "password2", required = true)
+                    String password2,
+            @ApiParam(name = "email", value = "邮箱", required = true)
+            @RequestParam(name = "email", required = true)
+                    String email,
+            @ApiParam(name = "screenName", value = "姓名", required = true)
+            @RequestParam(name = "screenName", required = true)
+                    String screenName
+    ) {
+        try {
+            if (!StringUtils.equals(password1,password2)){
+                return APIResponse.fail("两次输入密码不一致，请检查密码");
+            }
+            // 调用Service注册方法
+            Integer resultInt = userService.register(username, password1,email,screenName);
+            if (resultInt == 3){
+                return APIResponse.fail("任一输入项不能为空");
+            }else if (resultInt == 4){
+                return APIResponse.fail("该账号已注册，请换一个重试");
+            }else if (resultInt == null || resultInt == 0){
+                return APIResponse.fail("注册失败，该用户已存在");
+            }
+            if (password1.length() < 6 || password1.length() > 14) {
+                return APIResponse.fail("请输入6-14位密码");
+            }
+        }catch (Exception e){
+            if (e.getMessage().contains("key \'mail\'")){
+                return APIResponse.fail("该邮箱已注册，请换一个重试");
+            }
+            if (e.getMessage().contains("key \'username\'")){
+                return APIResponse.fail("该账号已注册，请换一个重试");
+            }
+            return APIResponse.fail(e.getMessage());
+        }
+
+        // 返回登录成功信息
+        return APIResponse.success();
+    }
+
     @RequestMapping(value = "/logout")
     public void logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
         // 移除session
@@ -112,6 +174,68 @@ public class AuthController extends BaseController {
             e.printStackTrace();
             LOGGER.error("注销失败",e);
         }
+    }
+
+    @RequestMapping(value = "/update1")
+    public String update1(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+                       @ApiParam(name = "username", value = "用户名", required = true)
+            @RequestParam(name = "username", required = true)
+                    String username,
+            @ApiParam(name = "password1", value = "密码1", required = true)
+            @RequestParam(name = "password1", required = true)
+                    String password1,
+            @ApiParam(name = "password2", value = "密码2", required = true)
+            @RequestParam(name = "password2", required = true)
+                    String password2
+                       ) {
+
+        if(!password1.equals(password2)){
+            return "/admin/setting";
+        }
+        UserDomain user = new UserDomain();
+        user.setUsername(username);
+        user.setPassword(password1);
+        int resultInt = userService.updateUserInfo(user);
+
+        // 移除session
+        session.removeAttribute(WebConst.LOGIN_SESSION_KEY);
+        // 设置cookie值和时间为空
+        Cookie cookie = new Cookie(WebConst.USER_IN_COOKIE, "");
+        cookie.setValue(null);
+        cookie.setMaxAge(0);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        try {
+            // 跳转到登录页面
+            response.sendRedirect("/admin/login");
+        } catch (IOException e) {
+            e.printStackTrace();
+            LOGGER.error("注销失败",e);
+        }
+        return "/admin/login";
+    }
+
+    @RequestMapping(value = "/update2")
+    public Map update2(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+                       @ApiParam(name = "username", value = "用户名", required = true)
+                       @RequestParam(name = "username", required = true)
+                               String username,
+                       @ApiParam(name = "email", value = "邮箱", required = true)
+                       @RequestParam(name = "email", required = true)
+                               String email,
+                       @ApiParam(name = "screenName", value = "姓名", required = true)
+                       @RequestParam(name = "screenName", required = true)
+                               String screenName
+    ) {
+
+        UserDomain user = new UserDomain();
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setScreenName(screenName);
+        int resultInt = userService.updateUserInfo(user);
+        HashMap<Object, Object> map = new HashMap<>();
+        map.put("result","success");
+        return map;
     }
 
 

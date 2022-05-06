@@ -14,7 +14,7 @@
 * JS框架：Jquery
 * CSS框架：Bootstrap
 * 富文本编辑器：editor.md
-* 文件上传：dropzone
+* 文件上传：dropzone（已弃用）
 * 弹框插件：sweetalert
 
 #### 第三方

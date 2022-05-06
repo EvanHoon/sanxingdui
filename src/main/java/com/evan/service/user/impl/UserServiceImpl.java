@@ -11,6 +11,7 @@ import com.evan.exception.BusinessException;
 import com.evan.model.UserDomain;
 import com.evan.service.user.UserService;
 import com.evan.utils.TaleUtils;
+import org.apache.catalina.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,31 @@ public class UserServiceImpl implements UserService {
         if (null == user)
             throw BusinessException.withErrorCode(ErrorConstant.Auth.USERNAME_PASSWORD_ERROR);
         return user;
+    }
+
+    @Override
+    public Integer register(String username, String password, String email, String screenName) {
+
+        if (StringUtils.isBlank(username) || StringUtils.isBlank(password)
+                || StringUtils.isBlank(email) || StringUtils.isBlank(screenName)){
+            return 3;
+        }
+//            throw BusinessException.withErrorCode("任一输入项不能为空");3
+
+        UserDomain userTemp = userDao.getUserInfoByUsername(username);
+        if (null != userTemp){
+            return 4;
+        }
+//            throw BusinessException.withErrorCode("该用户已存在");4
+        String pwd = TaleUtils.MD5encode(username + password);
+        UserDomain userDomain = new UserDomain();
+        userDomain.setUsername(username);
+        userDomain.setPassword(pwd);
+        userDomain.setEmail(email);
+        userDomain.setScreenName(screenName);
+        Integer resultInt = userDao.registerUser(userDomain);
+
+        return resultInt;
     }
 
     @Override

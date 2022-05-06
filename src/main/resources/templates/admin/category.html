@@ -19,14 +19,14 @@
                             <div class="panel-body">
                                 <th:block th:each="c : ${categories}">
                                     <div class="btn-group m-b-10">
-                                        <th:block th:if="${c.name == '默认分类'}">
+                                        <th:block th:if="${c.name == '三星堆出土'}">
                                             <button type="button"
                                                     th:class="'btn btn-'+${adminCommons.rand_color()}+' waves-effect waves-light'">
                                                 <th:block th:text="${c.name}"/>
                                                 <th:block th:text="' ('+${c.count}+')'"/>
                                             </button>
                                         </th:block>
-                                        <th:block th:unless="${c.name == '默认分类'}">
+                                        <th:block th:unless="${c.name == '三星堆出土'}">
                                             <button type="button"
                                                     th:class="'btn btn-'+${adminCommons.rand_color()}+' dropdown-toggle waves-effect waves-light'"
                                                     data-toggle="dropdown" aria-expanded="false">

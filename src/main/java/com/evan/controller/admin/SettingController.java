@@ -4,6 +4,7 @@ import com.evan.constant.LogActions;
 import com.evan.constant.WebConst;
 import com.evan.controller.BaseController;
 import com.evan.model.OptionsDomain;
+import com.evan.model.UserDomain;
 import com.evan.service.log.LogService;
 import com.evan.service.option.OptionService;
 import com.evan.utils.APIResponse;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,13 +42,14 @@ public class SettingController extends BaseController {
 
     @ApiOperation("进入设置页")
     @GetMapping(value = "")
-    public String index(HttpServletRequest request) {
-        List<OptionsDomain> optionsList = optionService.getOptions();
-        Map<String, String> options = new HashMap<>();
-        optionsList.forEach((option) ->{
-            options.put(option.getName(),option.getValue());
-        });
-        request.setAttribute("options", options);
+    public String index(HttpSession session,HttpServletRequest request) {
+        UserDomain loginUser = (UserDomain) session.getAttribute(WebConst.LOGIN_SESSION_KEY);
+
+        Map<String, String> user = new HashMap<>();
+        user.put("username",loginUser.getUsername());
+        user.put("email",loginUser.getEmail());
+        user.put("screenName",loginUser.getScreenName());
+        request.setAttribute("user", user);
         return "admin/setting";
     }
 
