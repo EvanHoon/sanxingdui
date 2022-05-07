@@ -122,7 +122,7 @@
             data: $("#loginForm").serialize(),
             success: function (result) {
                 if (result && result.code == 'success') {
-                    // tale.alertError('注册成功');
+                    // tale.alertOk('注册成功');
                     window.location.href = '/admin';
                 } else {
                     tale.alertError(result.msg);

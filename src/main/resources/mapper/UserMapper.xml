@@ -74,11 +74,12 @@
     <!--注册-->
     <insert id="registerUser" parameterType="com.evan.model.UserDomain">
         INSERT INTO
-        <include refid="BASE_TABLE"/>(username,password,email,screenName)
+        <include refid="BASE_TABLE"/>(username,password,email,screenName,created)
         VALUES( #{username, jdbcType=VARCHAR},
             #{password, jdbcType=VARCHAR},
             #{email, jdbcType=VARCHAR},
-            #{screenName, jdbcType=VARCHAR})
+            #{screenName, jdbcType=VARCHAR},
+            #{created, jdbcType=INTEGER})
     </insert>
 
 

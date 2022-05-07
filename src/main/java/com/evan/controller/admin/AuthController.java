@@ -26,6 +26,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Api("登录相关接口")
 @Controller
@@ -103,7 +105,18 @@ public class AuthController extends BaseController {
         return APIResponse.success();
     }
 
-
+    public static boolean checkEmail(String email) {
+        boolean flag = false;
+        try {
+            String check = "^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+            Pattern regex = Pattern.compile(check);
+            Matcher matcher = regex.matcher(email);
+            flag = matcher.matches();
+        } catch (Exception e) {
+            flag = false;
+        }
+        return flag;
+    }
 
     @ApiOperation("注册")
     @PostMapping(value = "/register")
@@ -128,9 +141,13 @@ public class AuthController extends BaseController {
                     String screenName
     ) {
         try {
+            if (!checkEmail(email)){
+                return APIResponse.fail("邮箱格式错误，请检查后重试");
+            }
             if (!StringUtils.equals(password1,password2)){
                 return APIResponse.fail("两次输入密码不一致，请检查密码");
             }
+
             // 调用Service注册方法
             Integer resultInt = userService.register(username, password1,email,screenName);
             if (resultInt == 3){
@@ -143,6 +160,13 @@ public class AuthController extends BaseController {
             if (password1.length() < 6 || password1.length() > 14) {
                 return APIResponse.fail("请输入6-14位密码");
             }
+            if (username.length() < 4) {
+                return APIResponse.fail("请输入4位以上账号");
+            }
+            if (username.length() > 16){
+                return APIResponse.fail("请输入16位以下账号");
+            }
+
         }catch (Exception e){
             if (e.getMessage().contains("key \'mail\'")){
                 return APIResponse.fail("该邮箱已注册，请换一个重试");

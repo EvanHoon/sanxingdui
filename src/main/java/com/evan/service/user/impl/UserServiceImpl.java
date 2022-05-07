@@ -10,6 +10,7 @@ import com.evan.dao.UserDao;
 import com.evan.exception.BusinessException;
 import com.evan.model.UserDomain;
 import com.evan.service.user.UserService;
+import com.evan.utils.DateKit;
 import com.evan.utils.TaleUtils;
 import org.apache.catalina.User;
 import org.apache.commons.lang3.StringUtils;
@@ -56,6 +57,7 @@ public class UserServiceImpl implements UserService {
 //            throw BusinessException.withErrorCode("该用户已存在");4
         String pwd = TaleUtils.MD5encode(username + password);
         UserDomain userDomain = new UserDomain();
+        userDomain.setCreated(DateKit.getCurrentUnixTime());
         userDomain.setUsername(username);
         userDomain.setPassword(pwd);
         userDomain.setEmail(email);
