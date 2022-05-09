@@ -196,7 +196,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <!--打jar包启动类-->
                 <configuration>
-                    <mainClass>com.evan.MySxdApplication</mainClass>
+                    <mainClass>com.evan.SanxingduiApplication</mainClass>
                 </configuration>
             </plugin>
             <!--打jar包需要-->
