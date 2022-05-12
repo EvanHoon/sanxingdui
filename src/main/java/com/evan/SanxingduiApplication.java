@@ -29,7 +29,7 @@ public class SanxingduiApplication {
                 "Application is running! Access URLs:\n\t" +
                 "Local: \t\thttp://localhost:" + port + path + "/\n\t" +
                 "External: \thttp://" + ip + ":" + port + path + "/\n\t" +
-                "Swagger文档: \thttp://" + ip + ":" + port + path + "/doc.html\n" +
+                "后台管理端: \thttp://localhost:" + port + path + "/admin\n" +
                 "----------------------------------------------------------");
 
     }

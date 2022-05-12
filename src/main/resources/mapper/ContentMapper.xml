@@ -138,7 +138,7 @@
                 AND c.created &lt;= #{endTime, jdbcType=INTEGER}
             </if>
         </where>
-        ORDER BY c.created ASC
+        ORDER BY c.created DESC
     </select>
 
     <!--删除文章-->
